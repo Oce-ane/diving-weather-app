@@ -1,0 +1,51 @@
+<style>
+  #suggestions {
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    position: absolute;
+    z-index: 1000;
+  }
+  #suggestions div {
+    padding: 8px;
+    cursor: pointer;
+  }
+  #suggestions div:hover {
+    background-color: #f0f0f0;
+  }
+</style>
+
+<script>
+    async function fetchSuggestions(query) {
+      if (query.length < 3) {
+        document.getElementById('suggestions').innerHTML = '';
+        return;
+      }
+
+      const response = await fetch(`/autocomplete?query=${encodeURIComponent(query)}`);
+      if (response.ok) {
+        const data = await response.json();
+        const suggestions = data.suggestions;
+        const suggestionsBox = document.getElementById('suggestions');
+        suggestionsBox.innerHTML = '';
+        suggestions.forEach(suggestion => {
+          const div = document.createElement('div');
+          div.textContent = suggestion;
+          div.onclick = () => {
+            document.getElementById('location').value = suggestion;
+            suggestionsBox.innerHTML = '';
+          };
+          suggestionsBox.appendChild(div);
+        });
+      }
+    }
+</script>
+
+<h1>Welcome to the Diving Weather App!</h1>
+<form action="/weather" method="get">
+  <label for="location">Enter location:</label>
+  <input type="text" id="location" name="location" oninput="fetchSuggestions(this.value)" autocomplete="off" required>
+  <div id="suggestions"></div>
+  <button type="submit">Check Diving Conditions</button>
+</form>

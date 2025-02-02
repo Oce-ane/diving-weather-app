@@ -6,4 +6,8 @@ gem "sinatra"
 gem "httparty"
 gem "json"
 
+#setup a database
+gem 'sinatra-activerecord'
+gem 'sqlite3'
+
 # gem "rails"

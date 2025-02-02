@@ -7,11 +7,7 @@ OPEN_WEATHER_API_KEY = '***REMOVED***'
 OPEN_CAGE_API_KEY = '***REMOVED***'
 
 get '/' do
-  '<form action="/weather" method="get">
-    <label for="location">Enter location:</label>
-    <input type="text" id="location" name="location" required>
-    <button type="submit">Check Diving Conditions</button>
-  </form>'
+  erb :home
 end
 
 # get '/weather/:location' do
@@ -29,7 +25,26 @@ end
 #   end
 # end
 
+get '/autocomplete' do
+  query = params[:query]
+  return "Query is required" if query.nil? || query.strip.empty?
 
+  # OpenCage API URL for geocoding
+  api_url = "https://api.opencagedata.com/geocode/v1/json?q=#{query}&key=#{OPEN_CAGE_API_KEY}&limit=5"
+
+  # Fetch suggestions
+  response = HTTParty.get(api_url)
+  if response.code == 200
+    data = JSON.parse(response.body)
+    # Extract relevant location names
+    suggestions = data['results'].map { |result| result['formatted'] }
+    content_type :json
+    { suggestions: suggestions }.to_json
+  else
+    status 500
+    "Error fetching autocomplete suggestions"
+  end
+end
 
 get '/weather' do
   location = params[:location]
@@ -57,7 +72,10 @@ get '/weather' do
 
         # Evaluate diving conditions
         conditions = evaluate_diving_conditions(wave_height, wind_speed, water_temp)
-        "Location: #{location.capitalize}, Wave Height: #{wave_height}m, Wind Speed: #{wind_speed} m/s, Water Temp: #{water_temp}°C. #{conditions}"
+        "Location: #{location.capitalize},
+        Wave Height: #{wave_height}m,
+        Wind Speed: #{wind_speed} m/s,
+        Water Temp: #{water_temp}°C. #{conditions}"
       else
         "Error fetching weather data from Storm Glass. Please try again."
       end
