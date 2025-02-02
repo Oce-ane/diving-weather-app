@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'httparty'
 require 'json'
+require 'sinatra/activerecord'
+set :database, { adapter: 'sqlite3', database: 'db/development.sqlite3' }
 
 STORM_GLASS_API_KEY = '***REMOVED***-41e69b32-dd77-11ef-9159-0242ac130003'
 OPEN_WEATHER_API_KEY = '***REMOVED***'
