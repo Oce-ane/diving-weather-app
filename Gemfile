@@ -11,4 +11,8 @@ gem 'sinatra-activerecord'
 gem 'sqlite3'
 gem 'rake'
 
+#setup scrapper
+gem 'nokogiri'
+gem 'parallel'
+
 # gem "rails"
