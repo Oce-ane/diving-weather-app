@@ -8,7 +8,6 @@ require './models/dive_site'
 
 set :database_file, File.expand_path('config/database.yml', __dir__)
 
-STORM_GLASS_API_KEY = '***REMOVED***-41e69b32-dd77-11ef-9159-0242ac130003'
 
 get '/' do
   erb :home

@@ -16,3 +16,5 @@ gem 'rake'
 # setup scrapper
 gem 'nokogiri'
 gem 'parallel'
+
+gem "dotenv-rails"
