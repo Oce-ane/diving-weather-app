@@ -35,20 +35,22 @@ GEM
     json (2.9.1)
     logger (1.6.5)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.8)
     minitest (5.25.4)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
-    nokogiri (1.18.2)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.18.2-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.18.2-x86_64-darwin)
+      racc (~> 1.4)
     parallel (1.26.3)
+    pg (1.5.9)
+    pg_search (2.3.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     racc (1.8.1)
-    rack (3.1.8)
+    rack (3.1.9)
     rack-protection (4.1.1)
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
@@ -69,27 +71,25 @@ GEM
     sinatra-activerecord (2.0.28)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
-    sqlite3 (2.5.0)
-      mini_portile2 (~> 2.8.0)
-    sqlite3 (2.5.0-arm64-darwin)
     tilt (2.6.0)
     timeout (0.4.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
 
 PLATFORMS
-  arm64-darwin-23
-  ruby
+  arm64-darwin
+  x86_64-darwin
 
 DEPENDENCIES
   httparty
   json
   nokogiri
   parallel
+  pg
+  pg_search
   rake
   sinatra
   sinatra-activerecord
-  sqlite3
 
 BUNDLED WITH
-   2.5.6
+   2.6.3

@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: oceane
+  password: ""
+  host: localhost
+
+development:
+  <<: *default
+  database: diving_weather_app_development
+
+test:
+  <<: *default
+  database: diving_weather_app_test
+
+production:
+  <<: *default
+  database: diving_weather_app_production

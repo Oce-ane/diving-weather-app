@@ -1,51 +1,74 @@
-<style>
-  #suggestions {
-    border: 1px solid #ccc;
-    max-height: 150px;
-    overflow-y: auto;
-    background: white;
-    position: absolute;
-    z-index: 1000;
-  }
-  #suggestions div {
-    padding: 8px;
-    cursor: pointer;
-  }
-  #suggestions div:hover {
-    background-color: #f0f0f0;
-  }
-</style>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/javascripts/app.js"></script>
+</head>
 
 <script>
-    async function fetchSuggestions(query) {
-      if (query.length < 3) {
-        document.getElementById('suggestions').innerHTML = '';
-        return;
-      }
-
-      const response = await fetch(`/autocomplete?query=${encodeURIComponent(query)}`);
-      if (response.ok) {
-        const data = await response.json();
-        const suggestions = data.suggestions;
-        const suggestionsBox = document.getElementById('suggestions');
-        suggestionsBox.innerHTML = '';
-        suggestions.forEach(suggestion => {
-          const div = document.createElement('div');
-          div.textContent = suggestion;
-          div.onclick = () => {
-            document.getElementById('location').value = suggestion;
-            suggestionsBox.innerHTML = '';
-          };
-          suggestionsBox.appendChild(div);
-        });
-      }
+  async function search() {
+    const query = document.querySelector('input[name="query"]').value;
+    if (query.length < 3) {
+      alert("Please enter at least 3 characters");
+      return;
     }
+
+    const response = await fetch(`/search?query=${encodeURIComponent(query)}`);
+    const data = await response.json();
+
+    const resultsContainer = document.getElementById('search-results');
+    const conditionsContainer = document.getElementById('conditions');
+
+    if (data.error) {
+      resultsContainer.innerHTML = `<p>${data.error}</p>`;
+      conditionsContainer.innerHTML = '';
+    } else {
+      resultsContainer.innerHTML = '';
+      data.results.forEach(result => {
+        const p = document.createElement('p');
+        p.textContent = result.name;
+        resultsContainer.appendChild(p);
+      });
+
+      conditionsContainer.innerHTML = `<p>${data.conditions}</p>`;
+    }
+  }
 </script>
 
 <h1>Welcome to the Diving Weather App!</h1>
-<form action="/weather" method="get">
-  <label for="location">Enter location:</label>
-  <input type="text" id="location" name="location" oninput="fetchSuggestions(this.value)" autocomplete="off" required>
-  <div id="suggestions"></div>
-  <button type="submit">Check Diving Conditions</button>
+<form onsubmit="event.preventDefault(); search();">
+  <input type="text" name="query" id="dive-site-search" placeholder="Search for a country or dive site" autocomplete="off">
+  <button type="submit">Search</button>
 </form>
+
+<div id="search-results"></div>
+<div id="conditions">
+  <table>
+  <thead>
+    <tr>
+      <th>Dive Site</th>
+      <th>Wave Height</th>
+      <th>Wind Speed</th>
+      <th>Water Temp</th>
+      <th>Wave Period</th>
+      <th>Precipitation</th>
+      <th>Conditions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.name %></td>
+        <td><%= result.wave_height %>m</td>
+        <td><%= result.wind_speed %> m/s</td>
+        <td><%= result.water_temp %>°C</td>
+        <td><%= result.wave_period %>s</td>
+        <td><%= result.precipitation %>mm</td>
+        <td><%= result.conditions %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p><%= @conditions %></p>
+</div>
+
+<div id="suggestions"></div>
