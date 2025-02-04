@@ -2,8 +2,11 @@
 
 source 'https://rubygems.org'
 
-# setup app functionalities
+# setup app
 gem 'sinatra'
+gem 'dotenv'
+
+# setup features
 gem 'httparty'
 gem 'json'
 
@@ -17,4 +20,7 @@ gem 'rake'
 gem 'nokogiri'
 gem 'parallel'
 
-gem 'dotenv'
+group :test do
+  gem 'rspec'
+  gem 'rack-test'
+end
