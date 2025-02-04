@@ -11,6 +11,10 @@ set :database_file, File.expand_path('config/database.yml', __dir__)
 
 api_key = ENV['STORM_GLASS_API_KEY']
 
+get '/' do
+  erb :home
+end
+
 get '/search' do
   query = params[:query]
 
@@ -61,7 +65,14 @@ get '/search' do
         conditions = evaluate_diving_conditions(wave_height, wave_period, water_temp, current_speed, precipitation)
 
         response_data[:results] = @results.map { |r| { name: r.name } }
-        response_data[:conditions] = "Wave Height: #{wave_height}m, Wave Period: #{wave_period} sec, Water Temp: #{water_temp}°C, Current Speed: #{current_speed}m/s, Precipitation: #{precipitation}mm. #{conditions}"
+        response_data[:conditions] = {
+          wave_height: wave_height,
+          wave_period: wave_period,
+          water_temp: water_temp,
+          current_speed: current_speed,
+          precipitation: precipitation,
+          rating: conditions
+        }
       else
         response_data[:error] = 'An unexpected error occurred. Please try again later.'
       end
