@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'dotenv/load'
 require 'httparty'
 require 'json'
 require 'sinatra/activerecord'
@@ -8,6 +9,7 @@ require './models/dive_site'
 
 set :database_file, File.expand_path('config/database.yml', __dir__)
 
+api_key = ENV['STORM_GLASS_API_KEY']
 
 get '/' do
   erb :home
@@ -26,7 +28,7 @@ get '/search' do
 
     # Fetch weather data from Storm Glass
     stormglass_url = "https://api.stormglass.io/v2/weather/point?lat=#{lat}&lng=#{lon}&params=waveHeight,windSpeed,waterTemperature,wavePeriod,precipitation"
-    stormglass_response = HTTParty.get(stormglass_url, headers: { 'Authorization' => STORM_GLASS_API_KEY })
+    stormglass_response = HTTParty.get(stormglass_url, headers: { 'Authorization' => api_key })
 
     # Check for rate-limiting (HTTP status code 403)
     if stormglass_response.code == 403
