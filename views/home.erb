@@ -41,34 +41,6 @@
 </form>
 
 <div id="search-results"></div>
-<div id="conditions">
-  <table>
-  <thead>
-    <tr>
-      <th>Dive Site</th>
-      <th>Wave Height</th>
-      <th>Wind Speed</th>
-      <th>Water Temp</th>
-      <th>Wave Period</th>
-      <th>Precipitation</th>
-      <th>Conditions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @results.each do |result| %>
-      <tr>
-        <td><%= result.name %></td>
-        <td><%= result.wave_height %>m</td>
-        <td><%= result.wind_speed %> m/s</td>
-        <td><%= result.water_temp %>°C</td>
-        <td><%= result.wave_period %>s</td>
-        <td><%= result.precipitation %>mm</td>
-        <td><%= result.conditions %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<p><%= @conditions %></p>
-</div>
+<div id="conditions"></div>
 
 <div id="suggestions"></div>
