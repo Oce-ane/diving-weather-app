@@ -4,17 +4,21 @@
   <script src="/javascripts/app.js"></script>
 </head>
 
-<h1>Welcome to the Diving Weather App!</h1>
-<form onsubmit="event.preventDefault(); search();">
-  <input type="text" name="query" id="dive-site-search" placeholder="Search for a country or dive site" autocomplete="off">
-  <button type="submit">Search</button>
-</form>
+<body>
+  <div class="container">
+    <h1 class="app-title">Diving Weather App</h1>
+    <form onsubmit="event.preventDefault(); search();">
+      <input type="text" name="query" id="dive-site-search" placeholder="Search for a country or dive site" autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
 
-<!-- Suggestions list -->
-<div id="suggestions"></div>
+    <!-- Suggestions list -->
+    <div id="suggestions"></div>
 
-<!-- Search results -->
-<div id="search-results"></div>
+    <!-- Search results -->
+    <div id="search-results"></div>
 
-<!-- Conditions -->
-<div id="conditions"></div>
+    <!-- Conditions -->
+    <div id="conditions"></div>
+  </div>
+</body>
