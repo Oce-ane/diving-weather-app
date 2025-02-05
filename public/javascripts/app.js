@@ -55,37 +55,43 @@ async function search() {
 
     // Creating the conditions table
     conditionsContainer.innerHTML = `
-      <table>
-        <thead>
-          <tr>
-            <th>Condition</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Water temperature</td>
-            <td>${data.conditions.water_temp}</td>
-          </tr>
-          <tr>
-            <td>Current</td>
-            <td>${data.conditions.current_speed}</td>
-          </tr>
-          <tr>
-            <td>Wave height</td>
-            <td>${data.conditions.wave_height}</td>
-          </tr>
-           <tr>
-            <td>Wave period</td>
-            <td>${data.conditions.wave_period}</td>
-          </tr>
-           <tr>
-            <td>Precipitation</td>
-            <td>${data.conditions.precipitation}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>Rating: ${data.conditions.rating}</p>
+      <p>${data.conditions.rating}</p>
+      <div class="weather">
+        <div class="table_conditions">
+          <table>
+            <thead>
+              <tr>
+                <th>Condition</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Water temperature</td>
+                <td>${data.conditions.water_temp}</td>
+              </tr>
+              <tr>
+                <td>Current</td>
+                <td>${data.conditions.current_speed}</td>
+              </tr>
+              <tr>
+                <td>Wave height</td>
+                <td>${data.conditions.wave_height}</td>
+              </tr>
+              <tr>
+                <td>Wave period</td>
+                <td>${data.conditions.wave_period}</td>
+              </tr>
+              <tr>
+                <td>Precipitation</td>
+                <td>${data.conditions.precipitation}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="color_conditions">
+        </div>
+      </div>
     `;
   }
 }

@@ -1,9 +1,13 @@
 # How to make it better
 
 ## Frontend Design & UX
-- Work on overall design and UI improvements.
-- Make the app a single-page app inspired by Dribbble (WhatTheHex).
-- Add a footer for extra information or links.
+- Set the background color of the body and container to the same color.
+- Remove the box shadow from the main container.
+- Add a second container just for the diving conditions, with a subtle box shadow.
+- Increase padding between elements for better spacing.
+- Move the rating above the table.
+- Use flexbox to align the table and a color-indicator div side by side.
+- Add a fixed footer at the bottom of the page.
 
 ## Functionality
 - Implement the map feature to select dive sites interactively.
