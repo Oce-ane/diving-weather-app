@@ -20,7 +20,13 @@ gem 'rake'
 gem 'nokogiri'
 gem 'parallel'
 
+# setup testing
 group :test do
   gem 'rspec'
   gem 'rack-test'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end

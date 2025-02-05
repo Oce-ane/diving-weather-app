@@ -119,6 +119,6 @@ def evaluate_diving_conditions(wave_height, wave_period, water_temp, current_spe
   elsif wave_height > 2.9 && wave_period > 18 && water_temp < 20 && precipitation > 20
     'Not worth getting out of bed'
   else
-    'Conditions are acceptable for diving'
+    'Who even knows anything anymore about climate & weather'
   end
 end

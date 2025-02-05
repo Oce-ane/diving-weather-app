@@ -1,4 +1,4 @@
-// AUTOSEARCH FUNCTION
+// AUTOCOMPLETE FUNCTION
 $(document).ready(function() {
   $('#dive-site-search').on('input', function() {
     var query = $(this).val();
