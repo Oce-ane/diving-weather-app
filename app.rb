@@ -7,11 +7,18 @@ require 'pg_search'
 require './models/country'
 require './models/dive_site'
 
+Dotenv.load
+
 set :database_file, File.expand_path('config/database.yml', __dir__)
 
 api_key = ENV['STORM_GLASS_API_KEY']
 
 get '/' do
+  erb :home
+end
+
+get '/' do
+  @mapbox_token = ENV['MAPBOX_ACCESS_TOKEN']
   erb :home
 end
 

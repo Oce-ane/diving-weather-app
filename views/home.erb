@@ -1,4 +1,6 @@
 <head>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
   <link rel="stylesheet" href="/styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/javascripts/app.js"></script>
@@ -6,11 +8,18 @@
 
 <body>
   <div class="container">
-    <h1 class="app-title">Diving Weather App</h1>
+    <h1 class="app-title">🤿 Sea the condtions 🌊</h1>
     <form onsubmit="event.preventDefault(); search();">
       <input type="text" name="query" id="dive-site-search" placeholder="Search for a country or dive site" autocomplete="off">
       <button type="submit">Search</button>
     </form>
+
+    <!--Map -->
+    <div id="map"></div>
+    <script>
+      const MAPBOX_ACCESS_TOKEN = "<%= @mapbox_token %>";
+    </script>
+    <script src="/javascripts/map.js"></script>
 
     <!-- Suggestions list -->
     <div id="suggestions"></div>
@@ -21,5 +30,5 @@
     <!-- Conditions -->
     <div id="conditions"></div>
   </div>
-  <div class="footer">Made for 🤿 🌊 🐡 🪼 🐙 🐬 🦀 🪸 🐳</div>
+  <div class="footer">Made for watching 🐡 🪼 🐙 🐬 🦀 🪸 🐳</div>
 </body>
