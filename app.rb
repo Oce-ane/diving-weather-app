@@ -4,7 +4,6 @@ require 'httparty'
 require 'json'
 require 'sinatra/activerecord'
 require 'pg_search'
-require 'sinatra/cross_origin'
 require './models/country'
 require './models/dive_site'
 
@@ -13,7 +12,6 @@ Dotenv.load
 set :database_file, File.expand_path('config/database.yml', __dir__)
 
 api_key = ENV['STORM_GLASS_API_KEY']
-MAPBOX_ACCESS_TOKEN = ENV['MAPBOX_ACCESS_TOKEN']
 
 get '/' do
   erb :home
