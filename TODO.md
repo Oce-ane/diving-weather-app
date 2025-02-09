@@ -7,7 +7,7 @@
 
 ## Functionality
 - Implement the map feature to select dive sites interactively.
-- Improve autocomplete search to provide better suggestions.
+- Improve autocomplete search to provide better suggestions (gem fuzzymatch)
 - Add more robust handling of edge cases in search queries.
 
 ## Testing

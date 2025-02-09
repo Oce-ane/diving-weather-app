@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # setup app
 gem 'sinatra'
 gem 'dotenv'
+gem "sinatra-cross_origin", "~> 0.3.1"
 
 # setup features
 gem 'httparty'
