@@ -109,6 +109,20 @@ get '/autocomplete' do
   @dive_sites.to_json
 end
 
+get '/dive_sites' do
+  dive_sites = DiveSite.all
+  response_data = dive_sites.map do |site|
+    {
+      name: site.name,
+      latitude: site.latitude,
+      longitude: site.longitude
+    }
+  end
+
+  content_type :json
+  response_data.to_json
+end
+
 def evaluate_diving_conditions(wave_height, wave_period, water_temp, current_speed, precipitation)
   # Rules to evaluate diving conditions accrding to my own preferences
   # Needs to be adjusted to match professional divers expectations
