@@ -1,0 +1,231 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base Theme (Light Mode) */
+:root {
+  --primary: #0077b6;
+  --secondary: #90e0ef;
+  --background: #f8f9fa;
+  --text: #023e8a;
+  --accent: #ff6b6b;
+
+  --button-bg: var(--primary);
+  --button-text: #ffffff;
+  --border-radius: 8px;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #001f3f;
+    --secondary: #00a8cc;
+    --background: #002855;
+    --text: #f8f9fa;
+    --accent: #ff6b6b;
+
+    --button-bg: var(--primary);
+    --button-text: #ffffff;
+  }
+}
+
+html[data-theme="dark"] {
+  --primary: #001f3f;
+  --secondary: #00a8cc;
+  --background: #002855;
+  --text: #f8f9fa;
+  --accent: #ff6b6b;
+  --button-bg: var(--primary);
+  --button-text: #ffffff;
+}
+html[data-theme="light"] {
+  --primary: #0077b6;
+  --secondary: #90e0ef;
+  --background: #f8f9fa;
+  --text: #023e8a;
+  --accent: #ff6b6b;
+  --button-bg: var(--primary);
+  --button-text: #ffffff;
+}
+
+/* Apply Variables */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  text-align: center;
+  background-color: var(--background);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 600px;
+}
+.app-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+button {
+  padding: 10px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: var(--accent);
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+input[type="text"] {
+  flex-grow: 1;
+  min-width: 200px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #90e0ef;
+  outline: none;
+}
+input[type="text"]:focus {
+  border-color: #0077b6;
+}
+
+/* Map */
+#map {
+  width: 100%;
+  height: 50vh;
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.custom-cluster-icon {
+  background-color: white;
+  border-radius: 50%;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  height: 40px;
+  width: 40px;
+  border: 2px solid black;
+}
+.custom-cluster-icon .cluster-count {
+  line-height: 40px;
+}
+
+/* Search Results */
+#search-results {
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* Conditions Section */
+#conditions {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Weather Info */
+.weather {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.marine_color {
+  background-color: green;
+  min-height: 10px;
+}
+.table_conditions {
+  padding: 2px;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: #f8f9fa;
+  color: #023e8a;
+  font-weight: 500;
+}
+
+/* The switch */
+.switch {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 20px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: #2196F3;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+.slider.round {
+  border-radius: 20px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
