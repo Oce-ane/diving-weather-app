@@ -4,9 +4,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Global Styles */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: white;
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #023e8a;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,16 +20,19 @@ body {
   text-align: center;
   background-color: white;
   padding: 30px;
-  border-radius: 6px;
+  border-radius: 12px;
   width: 90%;
   max-width: 600px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 .app-title {
   font-size: 36px;
-  font-weight: bold;
-  color: #333;
+  font-weight: 700;
+  color: #0077b6;
   margin-bottom: 20px;
 }
+
+/* Form Styles */
 form {
   display: flex;
   flex-wrap: wrap;
@@ -36,28 +42,42 @@ form {
 input[type="text"] {
   flex-grow: 1;
   min-width: 200px;
-  border-radius: 6px;
-}
-button {
   padding: 10px;
-  margin-left: 10px;
-  background-color: #007BFF;
-  border: none;
+  border-radius: 8px;
+  border: 2px solid #90e0ef;
+  outline: none;
+}
+input[type="text"]:focus {
+  border-color: #0077b6;
+}
+
+/* Button Styles */
+button {
+  padding: 10px 15px;
+  background-color: #0077b6;
+  border: 2px solid #0077b6;
   color: white;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 button:hover {
   background-color: #0056b3;
+  border-color: #0056b3;
 }
 
+/* Map */
 #map {
   width: 100%;
   height: 50vh;
   margin-top: 1rem;
-  border-radius: 6px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+/* Cluster Icons */
 .custom-cluster-icon {
+  background-color: white;
   border-radius: 50%;
   color: black;
   display: flex;
@@ -67,23 +87,29 @@ button:hover {
   font-size: 14px;
   height: 40px;
   width: 40px;
+  border: 2px solid black;
 }
 .custom-cluster-icon .cluster-count {
   line-height: 40px;
 }
+
+/* Search Results */
 #search-results {
   margin-top: 20px;
   text-align: left;
 }
 
+/* Conditions Section */
 #conditions {
   margin-top: 20px;
   font-size: 16px;
   font-weight: bold;
   background-color: white;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 1rem;
 }
+
+/* Weather Info */
 .weather {
   display: flex;
   flex-direction: row;
@@ -98,10 +124,15 @@ button:hover {
 .table_conditions {
   padding: 2px;
 }
+
+/* Footer */
 .footer {
   position: fixed;
-  bottom: 0%;
+  bottom: 0;
   width: 100%;
   text-align: center;
   padding: 10px;
+  background-color: #f8f9fa;
+  color: #023e8a;
+  font-weight: 500;
 }
